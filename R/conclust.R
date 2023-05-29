@@ -12,8 +12,7 @@
 #' @param exclude A vector of words that the user does not want included in the final keyword set.
 #' @param verbose If true, conclust will produce live updates as it adds keywords.
 #' @keywords conclust
-#' @importFrom data.table as.data.table data.table
-#' @import dplyr
+#' @import dplyr data.table
 #' @export
 #' @examples
 #' \dontrun{
