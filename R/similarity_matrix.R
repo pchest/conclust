@@ -18,7 +18,7 @@ similarity_matrix <- function(x,
 #' @export
 similarity_matrix.matrix <- function(x,
                                      words = NULL){
-    stop(!is.numeric(x))
+    if(!is.numeric(x)) stop("Matrix is not numeric")
     y <- x %*% t(x)
     out <- y / (sqrt(diag(y)) %*% t(sqrt(diag(y))))
     if(!is.null(words)) {dimnames(out) <- list(words, words)}
