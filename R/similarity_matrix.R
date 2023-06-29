@@ -1,15 +1,15 @@
 #' Algorithm designed to create a cosine similarity matrix from a fitted word embedding model
 #'
-#' This function takes a fitted word embedding model and computes the cosine similarity between
+#' @description This function takes a fitted word embedding model and computes the cosine similarity between
 #' each word.
 #' @param x A word embedding matrix
 #' @param words A vector of words that correspond to the word dimension of the fitted word embeddings
 #' @keywords conclust
-#' @export
 #' @examples
 #' \dontrun{
 #' # Create a set of keywords using a pre-defined set of seeds
 #' }
+#' @export
 similarity_matrix <- function(x,
                               words = NULL) {
     UseMethod("similarity_matrix")

@@ -1,6 +1,6 @@
 #' Algorithm designed to efficiently extract keywords from a cosine similarity matrix
 #'
-#' This function takes a cosine similarity matrix derived from a word embedding model,
+#' @description This function takes a cosine similarity matrix derived from a word embedding model,
 #' along with a set of seed words and outputs a semantically-related set of keywords of
 #' a length and cosimilarity determined by the user
 #' @param sim_mat A cosine similarity matrix produced by cosine.
@@ -12,19 +12,18 @@
 #' @param exclude A vector of words that the user does not want included in the final keyword set.
 #' @param verbose If true, conclust will produce live updates as it adds keywords.
 #' @keywords conclust
-#' @import dplyr data.table
-#' @export
+#' @import data.table
 #' @examples
 #' \dontrun{
 #' # Create a set of keywords using a pre-defined set of seeds
 #' corpcoded <- corpus_subset(data_corpus_manifestosentsUK, !is.na(crowd_immigration_label))
-#' corpuncoded <- data_corpus_manifestosentsUK %>%
-#'     corpus_subset(is.na(crowd_immigration_label) & year > 1980) %>%
+#' corpuncoded <- data_corpus_manifestosentsUK |>
+#'     corpus_subset(is.na(crowd_immigration_label) & year > 1980) |>
 #'     corpus_sample(size = ndoc(corpcoded))
 #' corp <- corpcoded + corpuncoded
 #'
 #' # form a tf-idf-weighted dfm
-#' dfmat <- dfm(corp) %>%
+#' dfmat <- dfm(corp) |>
 #'     dfm_tfidf()
 #'
 #' set.seed(1000)
@@ -34,6 +33,7 @@
 #' table(pred)
 #' tail(texts(corpuncoded)[pred == "Immigration"], 10)
 #' }
+#' @export
 conclust <- function(sim_mat,
                      seed_words,
                      sim_thresh = 0.25,
@@ -45,16 +45,16 @@ conclust <- function(sim_mat,
 }
 
 #' @export
-conclust.matrix <- function(sim_mat,
+conclust.data.frame <- function(sim_mat,
                             seed_words,
                             sim_thresh = 0.25,
                             max_n = 50,
                             dictionary = NULL,
                             exclude = NULL,
                             verbose = TRUE){
+  sim_mat <- as.data.table(sim_mat)
   if(verbose) {cat('Initializing with', paste(seed_words, collapse = ", "), '\n')}
-  if(!is.data.table(dist_mat)) dist_mat <- as.data.table(dist_mat)
-  in_mat <- seed_words %in% names(dist_mat)
+  in_mat <- seed_words %in% names(sim_mat)
   missing_words <- seed_words[!in_mat]
   if(verbose){
    for(i in missing_words){
@@ -65,14 +65,14 @@ conclust.matrix <- function(sim_mat,
   }
   }
   seed_words <- seed_words[in_mat]
-  dist_mat$row_names <- setdiff(names(dist_mat), "row_names")
-  #dist_mat[, row_names := setdiff(names(dist_mat), "row_names")]
-  if(!is.null(exclude)) dist_mat[!(row_names %in% exclude), ][, (exclude) := NULL]
+  sim_mat$row_names <- setdiff(names(sim_mat), "row_names")
+  #sim_mat[, row_names := setdiff(names(sim_mat), "row_names")]
+  if(!is.null(exclude)) sim_mat[!(row_names %in% exclude), ][, (exclude) := NULL]
   col_names <- c("row_names", seed_words)
   while(length(seed_words) < max_n){
-    sub <- dist_mat[, ..col_names
+    sub <- sim_mat[, ..col_names
                     ][, mean_sim := rowMeans(.SD), .SD = seed_words
-                    ][!(row_names %in% seed_words), ] %>%
+                    ][!(row_names %in% seed_words), ] |>
         setorder(-mean_sim)
     if(sub$mean_sim[1] < sim_thresh) break
     seed_words <- c(seed_words, sub$row_names[1])
@@ -80,8 +80,8 @@ conclust.matrix <- function(sim_mat,
     col_names <- c("row_names", seed_words)
   }
   dict <- data.table(row_names = seed_words, X = 1:length(seed_words))
-  sim_mat <- dist_mat[, ..col_names][row_names %in% seed_words, ] %>%
-    merge(dict, by = "row_names") %>%
+  sim_mat <- sim_mat[, ..col_names][row_names %in% seed_words, ] |>
+    merge(dict, by = "row_names") |>
     setorder(X)
   sim_mat[, X := NULL]
   out_mat <- as.matrix(sim_mat[, -1])
@@ -90,11 +90,8 @@ conclust.matrix <- function(sim_mat,
   sim_group <- rowMeans(out_mat)
   word_df <- data.frame(Term = seed_words, Group_similarity = sim_group)
   if(!is.null(dictionary)) word_df <- merge(word_df, dictionary, by = "Term", all.x = TRUE)
-  word_df <-
-    word_df %>%
-    arrange(-Group_similarity)
+  word_df <- word_df |>
+    setorder(-Group_similarity)
   out <- list(Concept_lex = word_df, Sim_mat = out_mat)
   return(out)
 }
-
-

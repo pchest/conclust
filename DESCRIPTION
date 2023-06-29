@@ -11,3 +11,4 @@ Encoding: UTF-8
 LazyData: true
 Imports: Rcpp (>= 1.0.10)
 LinkingTo: Rcpp
+RoxygenNote: 7.2.3
