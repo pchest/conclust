@@ -1,14 +1,22 @@
 Package: conclust
 Type: Package
-Title: What the Package Does (Title Case)
+Title: A model for semi-supervised keyword extraction from word embedding models
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: person("Patrick", "Chester", email = "patrickjchester@gmail.com", role = c("auth"))
+Maintainer: Patrick Chester <patrickjchester@gmail.com>
+Description: This package is designed to enable researchers to efficiently and quickly extract semantically-related keywords using a fitted embedding model.
 Encoding: UTF-8
-LazyData: true
-Imports: Rcpp (>= 1.0.10)
+License: GPL-3
+Depends:
+    R (>= 4.2.0)
+Imports:
+    Rcpp (>= 1.0.10),
+    data.table (>= 1.14.8)
+Suggests:
+    spelling,
+    testthat
 LinkingTo: Rcpp
+LazyData: TRUE
 RoxygenNote: 7.2.3
+Language: en-US
+Roxygen: list(markdown = TRUE)

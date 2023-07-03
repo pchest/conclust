@@ -5,13 +5,13 @@
 \alias{fastText_eng_sample}
 \title{Sample similarity matrix generated from the pre-trained English fastText model}
 \format{
-A 500 row and 500 column cosine similarity matrix
+A 2,000 row and 2,000 column cosine similarity matrix
 }
 \usage{
 fastText_eng_sample
 }
 \description{
-This similarity matrix has 500 rows and 500 columns. Each row
+This similarity matrix has 2,000 rows and 2,000 columns. Each row
 has numeric values that are the cosine similarity between that word
 and the word of each corresponding column
 }

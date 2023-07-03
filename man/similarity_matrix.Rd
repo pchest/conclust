@@ -9,7 +9,7 @@ similarity_matrix(x, words = NULL)
 \arguments{
 \item{x}{A word embedding matrix}
 
-\item{words}{A vector of words that correspond to the word dimension of the fitted word embeddings}
+\item{words}{A vector of words or the name of a column that corresponds to the word dimension of the fitted word embeddings}
 }
 \description{
 This function takes a fitted word embedding model and computes the cosine similarity between
