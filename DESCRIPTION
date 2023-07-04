@@ -10,13 +10,13 @@ License: GPL-3
 Depends:
     R (>= 4.2.0)
 Imports:
-    Rcpp (>= 1.0.10),
     data.table (>= 1.14.8)
 Suggests:
     spelling,
     testthat
 LinkingTo: Rcpp
 LazyData: TRUE
+LazyDataCompression:xz
 RoxygenNote: 7.2.3
 Language: en-US
 Roxygen: list(markdown = TRUE)
