@@ -30,6 +30,7 @@ similarity_matrix.matrix <- function(x,
 #' @export
 similarity_matrix.data.table <- function(x,
                                      words = NULL){
+    ..col_keep <- NULL
     if(is.null(words)) stop("Provide words column name or vector")
     if(length(words) == 1) {
       w <- x[[words]]

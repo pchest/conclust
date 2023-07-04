@@ -52,6 +52,7 @@ conclust.data.frame <- function(sim_mat,
                             dictionary = NULL,
                             exclude = NULL,
                             verbose = TRUE){
+  row_names <- ..col_names <- mean_sim <- X <- Group_similarity <- NULL
   sim_mat <- as.data.table(sim_mat)
   if(verbose) {cat('Initializing with', paste(seed_words, collapse = ", "), '\n')}
   in_mat <- seed_words %in% names(sim_mat)
@@ -66,7 +67,6 @@ conclust.data.frame <- function(sim_mat,
   }
   seed_words <- seed_words[in_mat]
   sim_mat$row_names <- setdiff(names(sim_mat), "row_names")
-  #sim_mat[, row_names := setdiff(names(sim_mat), "row_names")]
   if(!is.null(exclude)) sim_mat[!(row_names %in% exclude), ][, (exclude) := NULL]
   col_names <- c("row_names", seed_words)
   while(length(seed_words) < max_n){
@@ -104,6 +104,7 @@ conclust.matrix <- function(sim_mat,
                             dictionary = NULL,
                             exclude = NULL,
                             verbose = TRUE){
+  row_names <- ..col_names <- mean_sim <- X <- Group_similarity <- NULL
   sim_mat <- as.data.table(sim_mat)
   if(verbose) {cat('Initializing with', paste(seed_words, collapse = ", "), '\n')}
   in_mat <- seed_words %in% names(sim_mat)
