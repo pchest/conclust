@@ -8,14 +8,14 @@
 #'
 #' @examples
 #' \donttest{
-#' data(fastText_eng_sample)
+#' data(simmat_FasttextEng_sample)
 #' }
 #' @references P. Bojanowski*, E. Grave*, A. Joulin, T. Mikolov,
 #' Enriching Word Vectors with Subword Information
 #' (\href{https://arxiv.org/abs/1607.04606}{arxiv})
 #'
 #' @keywords data
-"fastText_eng_sample"
+"simmat_FasttextEng_sample"
 
 #' Sample from the pre-trained English fastText model
 #'
@@ -28,11 +28,11 @@
 #'
 #' @examples
 #' \donttest{
-#' data(fastText_vec_eng_sample)
+#' data(wordemb_FasttextEng_sample)
 #' }
 #' @references P. Bojanowski*, E. Grave*, A. Joulin, T. Mikolov,
 #' Enriching Word Vectors with Subword Information
 #' (\href{https://arxiv.org/abs/1607.04606}{arxiv})
 #'
 #' @keywords data
-"fastText_vec_eng_sample"
+"wordemb_FasttextEng_sample"
