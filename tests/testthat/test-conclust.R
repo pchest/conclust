@@ -7,18 +7,26 @@ test_that("conclust works", {
 
     ## Test 1: conclust produces sensible output
 
-    r1 <- conclust(sim_mat = fastText_eng_sample, seed_words = seed_words, max_n = 8, sim_thresh = .4)
+    r1 <- conclust(sim_mat = simmat_FasttextEng_sample, seed_words = seed_words, max_n = 8, sim_thresh = .4)
 
-    expect_true(sum(r1$Concept_lex$Term %in% tolower(month.name)) == nrow(r1$Concept_lex))
+    r1_terms <- terms(r1)
+
+    expect_true(sum(r1_terms$Term %in% tolower(month.name)) == nrow(r1_terms))
 
     ## Test 2: max_n
 
-    expect_true(nrow(r1$Concept_lex) == 8)
+    expect_true(nrow(r1_terms) == 8)
 
-    ## Test 3: sim_thresh
+    ## Test 3: cosimilarity matrix
 
-    r2 <- conclust(sim_mat = fastText_eng_sample, seed_words = seed_words, max_n = 50, sim_thresh = .7)
+    cm <- cosimilarity_matrix(r1)
 
-    expect_true(min(r2$Concept_lex$Group_similarity) >= 0.4)
+    expect_true(dim(cm)[1] == nrow(r1_terms) & dim(cm)[2] == nrow(r1_terms))
+
+    ## Test 4: sim_thresh
+
+    r2 <- conclust(sim_mat = simmat_FasttextEng_sample, seed_words = seed_words, max_n = 50, sim_thresh = .7)
+
+    expect_true(min(terms(r2)$Group_similarity) >= 0.4)
 
 })

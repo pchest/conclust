@@ -38,22 +38,8 @@ a length and cosimilarity determined by the user
 \examples{
 \dontrun{
 # Create a set of keywords using a pre-defined set of seeds
-corpcoded <- corpus_subset(data_corpus_manifestosentsUK, !is.na(crowd_immigration_label))
-corpuncoded <- data_corpus_manifestosentsUK |>
-    corpus_subset(is.na(crowd_immigration_label) & year > 1980) |>
-    corpus_sample(size = ndoc(corpcoded))
-corp <- corpcoded + corpuncoded
-
-# form a tf-idf-weighted dfm
-dfmat <- dfm(corp) |>
-    dfm_tfidf()
-
-set.seed(1000)
-tmod <- textmodel_mlp(dfmat, y = docvars(dfmat, "crowd_immigration_label"),
-                        epochs = 5, verbose = 1)
-pred <- predict(tmod, newdata = dfm_subset(dfmat, is.na(crowd_immigration_label)))
-table(pred)
-tail(texts(corpuncoded)[pred == "Immigration"], 10)
+seeds <- c("October", "November")
+months <- conclust(fastText_eng_sample, seed_words = seeds, max_n = 8)
 }
 }
 \keyword{conclust}
