@@ -39,7 +39,7 @@ a length and cosimilarity determined by the user
 \dontrun{
 # Create a set of keywords using a pre-defined set of seeds
 seeds <- c("October", "November")
-months <- conclust(fastText_eng_sample, seed_words = seeds, max_n = 8)
+months <- conclust(simmat_FasttextEng_sample, seed_words = seeds, max_n = 8)
 }
 }
 \keyword{conclust}

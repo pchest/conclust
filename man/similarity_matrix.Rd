@@ -4,12 +4,15 @@
 \alias{similarity_matrix}
 \title{Algorithm designed to create a cosine similarity matrix from a fitted word embedding model}
 \usage{
-similarity_matrix(x, words = NULL)
+similarity_matrix(x, words = NULL, max_terms = 25000)
 }
 \arguments{
 \item{x}{A word embedding matrix}
 
 \item{words}{A vector of words or the name of a column that corresponds to the word dimension of the fitted word embeddings}
+
+\item{max_terms}{The maximum number of embedding terms that will be included in output similarity matrix.
+Assumes that embedding input is ordered by word frequency.}
 }
 \description{
 This function takes a fitted word embedding model and computes the cosine similarity between
@@ -18,6 +21,7 @@ each word.
 \examples{
 \dontrun{
 # Create a set of keywords using a pre-defined set of seeds
+simmat <- similarity_matrix(wordemb_FasttextEng_sample, words = "words")
 }
 }
 \keyword{conclust}
