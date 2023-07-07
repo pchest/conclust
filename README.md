@@ -9,7 +9,7 @@ devtools::install_github("pchest/conclust")
 
 ## Usage
 
-### Creating a cosimilarity matrix from a word embeddings model
+### Creating a cosimilarity matrix from a pre-fitted word embeddings model
 
 ```
 library(conclust)
