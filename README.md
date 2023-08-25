@@ -14,13 +14,15 @@ devtools::install_github("pchest/conclust")
 ```
 library(conclust)
 
-simmat <- similarity_matrix(wordemb_FasttextEng_sample, words = "words")
+simmat <- wordemb_FasttextEng_sample |>
+    process_embed(words = "words") |>
+    similarity_matrix(words = "words")
 ```
 
 ### Extracting a semantically-related set of keywords from a cosimilarity matrix
 
 ```
-seed_months <- c("October", "November")
+seed_months <- c("october", "november")
 
 out_months <- conclust(simmat, seed_words = seed_months, max_n = 10)
 

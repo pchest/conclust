@@ -1,7 +1,7 @@
 Package: conclust
 Type: Package
 Title: A model for semi-supervised keyword extraction from word embedding models
-Version: 0.1.0
+Version: 0.1.1
 Author: person("Patrick", "Chester", email = "patrickjchester@gmail.com", role = c("auth"))
 Maintainer: Patrick Chester <patrickjchester@gmail.com>
 Description: This package is designed to enable researchers to efficiently and quickly extract semantically-related keywords using a fitted embedding model.
