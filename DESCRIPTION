@@ -10,7 +10,8 @@ License: GPL-3
 Depends:
     R (>= 4.1.0)
 Imports:
-    data.table (>= 1.14.8)
+    data.table (>= 1.14.8),
+    textstem (>= 0.1.4)
 Suggests:
     spelling,
     testthat

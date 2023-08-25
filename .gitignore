@@ -3,6 +3,7 @@
 .RData
 .Rproj
 .Ruserdata
+.github
 src/*.o
 src/*.so
 src/*.dll
