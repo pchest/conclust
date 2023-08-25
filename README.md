@@ -4,6 +4,8 @@ This package is designed to enable researchers to quickly and efficiently genera
 ## Installation
 
 ```
+install.packages("devtools") # If not already installed
+
 devtools::install_github("pchest/conclust")
 ```
 
