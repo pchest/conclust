@@ -1,4 +1,4 @@
 library("testthat")
-library("conclust")
+library("keyclust")
 
-test_check("conclust")
+test_check("keyclust")

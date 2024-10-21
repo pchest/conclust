@@ -1,4 +1,4 @@
-context("test conclust")
+context("test keyclust")
 
 test_that("process_embed works", {
     skip_on_cran()
@@ -17,10 +17,10 @@ test_that("process_embed works", {
 
     expect_true(dim(sm)[1] == nrow(wordemb_FasttextEng_pe) & dim(sm)[2] == nrow(wordemb_FasttextEng_pe))
 
-    # Test 5: Make sure that it works with conclust
+    # Test 5: Make sure that it works with keyclust
     seed_words <- c("october", "november")
 
-    r1 <- conclust(sim_mat = sm, seed_words = seed_words, max_n = 11)
+    r1 <- keyclust(sim_mat = sm, seed_words = seed_words, max_n = 11)
 
     expect_true(sum(tolower(month.name) %in% r1$Concept_lex$Term) == 11)
 

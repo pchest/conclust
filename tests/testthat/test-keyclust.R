@@ -1,13 +1,13 @@
-context("test conclust")
+context("test keyclust")
 
-test_that("conclust works", {
+test_that("keyclust works", {
     skip_on_cran()
 
     seed_words = c("september", "october", "november")
 
-    ## Test 1: conclust produces sensible output
+    ## Test 1: keyclust produces sensible output
 
-    r1 <- conclust(sim_mat = simmat_FasttextEng_sample, seed_words = seed_words, max_n = 8, sim_thresh = .4)
+    r1 <- keyclust(sim_mat = simmat_FasttextEng_sample, seed_words = seed_words, max_n = 8, sim_thresh = .4)
 
     r1_terms <- terms(r1)
 
@@ -25,7 +25,7 @@ test_that("conclust works", {
 
     ## Test 4: sim_thresh
 
-    r2 <- conclust(sim_mat = simmat_FasttextEng_sample, seed_words = seed_words, max_n = 50, sim_thresh = .7)
+    r2 <- keyclust(sim_mat = simmat_FasttextEng_sample, seed_words = seed_words, max_n = 50, sim_thresh = .7)
 
     expect_true(min(terms(r2)$Group_similarity) >= 0.4)
 

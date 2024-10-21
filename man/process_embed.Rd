@@ -30,4 +30,4 @@ process_embed(
 Takes a fitted embedding model as an input. Allows users to combine
 embeddings by the case, stem, or lemma of associated terms.
 }
-\keyword{conclust}
+\keyword{keyclust}

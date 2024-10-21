@@ -6,7 +6,7 @@
 #' @param words A vector of words or the name of a column that corresponds to the word dimension of the fitted word embeddings
 #' @param max_terms The maximum number of embedding terms that will be included in output similarity matrix.
 #' Assumes that embedding input is ordered by word frequency.
-#' @keywords conclust
+#' @keywords keyclust
 #' @import data.table
 #' @examples
 #' \dontrun{

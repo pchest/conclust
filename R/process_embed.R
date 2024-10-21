@@ -8,7 +8,7 @@
 #' @param tolower Combines terms that differ by case
 #' @param lemmatize Combines terms that share a common lemma. Uses the lexicon package by default.
 #' @param stem Combines terms that share a common stem. *Note:* Stemming should not be used in conjunction with lemmatize.
-#' @keywords conclust
+#' @keywords keyclust
 #' @import textstem
 #' @import data.table
 #' @export

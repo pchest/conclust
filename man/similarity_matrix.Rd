@@ -24,4 +24,4 @@ each word.
 simmat <- similarity_matrix(wordemb_FasttextEng_sample, words = "words")
 }
 }
-\keyword{conclust}
+\keyword{keyclust}

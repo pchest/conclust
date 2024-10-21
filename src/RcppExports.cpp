@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // rcpp_hello
 List rcpp_hello();
-RcppExport SEXP _conclust_rcpp_hello() {
+RcppExport SEXP _keyclust_rcpp_hello() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -22,11 +22,11 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_conclust_rcpp_hello", (DL_FUNC) &_conclust_rcpp_hello, 0},
+    {"_keyclust_rcpp_hello", (DL_FUNC) &_keyclust_rcpp_hello, 0},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_conclust(DllInfo *dll) {
+RcppExport void R_init_keyclust(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
